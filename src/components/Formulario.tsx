@@ -22,8 +22,8 @@ export default function Formulario(props:FormularioProps) {
             {id ? (
                 <Entrada somenteLeitura texto="Código" valor={id} className="mb-4"/>
             ) : false}
-            <Entrada  texto="Nome" valor="Teste" valorMudou={setNome} className="mb-4"/>
-            <Entrada tipo="number" texto="Idade" valor="Teste" valorMudou={setIdade} />
+            <Entrada  texto="Nome" valor={nome} valorMudou={setNome} className="mb-4"/>
+            <Entrada tipo="number" texto="Idade" valor={idade} valorMudou={setIdade} />
             <div className={`flex justify-end mt-7`}>
                 <Botao
                     onClick={()=> props.clienteMudou?.(new Cliente(nome,+idade,id))}

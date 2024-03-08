@@ -11,6 +11,9 @@ import Formulario from "@/components/Formulario";
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
+    const [cliente, setCliente] = useState<Cliente>(Cliente.vazio())
+    const [visivel, setVisivel] = useState<'tabela' | 'form'>('tabela')
+
 
     const clientes = [
         new Cliente('Pedro', 18 , "32"),
@@ -19,7 +22,8 @@ export default function Home() {
 
     ]
     function clienteSelecionado(cliente:Cliente) {
-        console.log(cliente.nome)
+        setCliente(cliente)
+        setVisivel('form')
 
     }
     function clienteExcluido(cliente:Cliente) {
@@ -29,10 +33,15 @@ export default function Home() {
 
     function salvarCliente(cliente:Cliente) {
         console.log(cliente)
+        setVisivel('tabela')
 
     }
 
-    const [visivel, setVisivel] = useState<'tabela' | 'form'>('tabela')
+    function novoCliente() {
+        setCliente(Cliente.vazio())
+        setVisivel('form')
+    }
+
 
   return (
       <div className={`
@@ -45,7 +54,7 @@ export default function Home() {
                   <>
                       <div className={`flex justify-end`}>
                           <Botao
-                              onClick={() => setVisivel('form')}
+                              onClick={novoCliente}
                               cor="green"
                               className="mb-4">Novo Cliente</Botao>
                       </div>
@@ -59,7 +68,7 @@ export default function Home() {
 
                       clienteMudou={salvarCliente}
                       cancelado={()=> setVisivel('tabela')}
-                      cliente={clientes[2]}/>
+                      cliente={cliente}/>
               )}
 
 
