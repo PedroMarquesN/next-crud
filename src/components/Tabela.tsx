@@ -1,5 +1,6 @@
 import Cliente from "../core/Cliente";
-import {IconeEdit, IconeLixo} from "../../public/icons/Icones";
+import {IconeEdit, IconeLixo} from "@/components/Icones";
+
 
 interface TabelaProps {
     clientes: Cliente[],
@@ -48,6 +49,8 @@ export default function Tabela(props:TabelaProps) {
                     flex justify-center items-center
                     text-green-600 rounded-full p-2 m-1
                     hover:bg-purple-50
+                    
+                    
                 `}>
                         {IconeEdit}
                     </button>
@@ -58,6 +61,8 @@ export default function Tabela(props:TabelaProps) {
                     flex justify-center items-center
                     text-red-600 rounded-full p-2 m-1
                     hover:bg-purple-50
+                    
+                    
                 `}>
                         {IconeLixo}
                     </button>
